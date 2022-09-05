@@ -28,4 +28,24 @@ int main() {
   comp.autonomous(autonomous);
   comp.drivercontrol(opcontrol);
   vexcodeInit();
+
+  //drive in 4ft square
+  drive.drive_forward(48.0, 0.7, 0, directionType::fwd);
+  drive.turn_degrees(90.0, 0.7);
+  drive.drive_forward(48.0, 0.7, 0, directionType::fwd);
+  drive.turn_degrees(90.0, 0.7);
+  drive.drive_forward(48.0, 0.7, 0, directionType::fwd);
+  drive.turn_degrees(90.0, 0.7);
+  drive.drive_forward(48.0, 0.7, 0, directionType::fwd);
+
+  while(bumper1.pressing()){
+    main_controller.Screen.print("ouch!");
+  }
+
+  if(distance1.isObjectDetected()){
+    if(distance1.objectDistance(mm) < 100){
+        drive.stop(); 
+    }
+  }
+
 }
