@@ -7,11 +7,12 @@ extern brain Brain;
 extern controller main_controller;
 
 // ======== OUTPUTS ========
-
+extern motor motorru, motorrb, motorlu, motorlb;
+extern motor_group left_motors, right_motors;
 // ======== INPUTS ========
 
 // ======== SUBSYSTEMS ========
-
+extern TankDrive drive;
 // ======== UTILS ========
 
 /**
