@@ -6,6 +6,14 @@ using namespace vex;
 extern brain Brain;
 extern controller main_controller;
 
+extern motor leftFront;
+extern motor leftBack;
+extern motor rightFront;
+extern motor rightBack;
+extern motor_group leftWheels;
+extern motor_group rightWheels;
+extern TankDrive drive_system;
+
 // ======== OUTPUTS ========
 
 // ======== INPUTS ========

@@ -13,6 +13,7 @@
 #include "vex.h"
 #include "competition/opcontrol.h"
 #include "competition/autonomous.h"
+#include "robot-config.h"
 
 using namespace vex;
 
