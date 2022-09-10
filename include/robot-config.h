@@ -8,10 +8,15 @@ extern controller main_controller;
 
 // ======== OUTPUTS ========
 
+extern motor driveLeftRear,driveLeftFront, driveRightRear, driveRightFront;
+extern motor_group leftDrive,rightDrive;
+
 // ======== INPUTS ========
 
-// ======== SUBSYSTEMS ========
+extern CustomEncoder rightEncoder,leftEncoder;
 
+// ======== SUBSYSTEMS ========
+extern TankDrive drive;
 // ======== UTILS ========
 
 /**
