@@ -8,10 +8,17 @@ extern brain Brain;
 extern controller main_controller;
 
 // ======== OUTPUTS ========
+extern motor lf, lr, rf, rr;
+extern motor_group left_motors, right_motors;
 
 // ======== INPUTS ========
+extern inertial imu;
 
 // ======== SUBSYSTEMS ========
+extern robot_specs_t robot_cfg;
+
+extern TankDrive drive;
+extern OdometryTank odom;
 
 // ======== UTILS ========
 
