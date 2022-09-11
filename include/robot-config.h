@@ -15,8 +15,18 @@ extern inertial imu;
 
 // ======== SUBSYSTEMS ========
 
-extern robot_specs_t robot_cfg;
+extern robot_specs_t robot_cfg; 
 extern OdometryTank odom;
+
+extern motor leftMotorF;
+extern motor rightMotorF;
+extern motor leftMotorB;
+extern motor rightMotorB;
+
+extern motor_group leftMotors;
+extern motor_group rightMotors;
+
+extern TankDrive drive_sys;
 
 // ======== UTILS ========
 
