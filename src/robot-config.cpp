@@ -6,8 +6,8 @@ using namespace vex;
 brain Brain;
 controller main_controller;
 
-vex::motor leftFront(11);
-vex::motor leftBack(12);
+vex::motor leftFront(11, true);
+vex::motor leftBack(12, true);
 vex::motor rightFront(20);
 vex::motor rightBack(19);
 

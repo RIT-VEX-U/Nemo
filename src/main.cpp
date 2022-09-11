@@ -27,7 +27,7 @@ competition comp;
  */
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
+  vexcodeInit();
   comp.autonomous(autonomous);
   comp.drivercontrol(opcontrol);
-  vexcodeInit();
 }

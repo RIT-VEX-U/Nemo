@@ -7,16 +7,33 @@
 void opcontrol()
 {
   // Initialization
-
+  static bool controlMode = true;
+  double left, right;
 
   // Periodic
   while(true)
   {
     
     // ========== DRIVING CONTROLS ==========
-    double left = main_controller.Axis1.position();
-    double right = main_controller.Axis2.position();
-    drive_system.drive_tank(left, right);
+    left = main_controller.Axis3.position() / 100.0;
+    right = main_controller.Axis2.position() / 100.0;
+
+    if(controlMode){
+      drive_system.drive_tank(left, right);
+    }
+    else{
+      drive_system.drive_arcade(left, right);
+    }
+
+    main_controller.ButtonR2.pressed([]() { 
+      controlMode = false; 
+    });
+    main_controller.ButtonL2.pressed([]() { 
+      controlMode = true; 
+    });
+
+
+    
     
     // ========== MANIPULATING CONTROLS ==========
 
