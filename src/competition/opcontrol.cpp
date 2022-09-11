@@ -31,10 +31,6 @@ void opcontrol()
     main_controller.ButtonL2.pressed([]() { 
       controlMode = true; 
     });
-
-
-    
-    
     // ========== MANIPULATING CONTROLS ==========
 
     // ========== SECONDARY REMOTE ==========
