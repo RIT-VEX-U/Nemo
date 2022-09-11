@@ -11,7 +11,12 @@ extern controller main_controller;
 
 // ======== INPUTS ========
 
+extern inertial imu;
+
 // ======== SUBSYSTEMS ========
+
+extern robot_specs_t robot_cfg;
+extern OdometryTank odom;
 
 // ======== UTILS ========
 
