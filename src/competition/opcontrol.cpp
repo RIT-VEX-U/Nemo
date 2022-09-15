@@ -26,7 +26,7 @@ void opcontrol()
   // Periodic
   while(true)
   {
-    
+    drive.drive_tank(main_controller.Axis3.position() / 100.0, main_controller.Axis2.position() / 100.0, 2);
     // ========== DRIVING CONTROLS ==========
     // if(main_controller.ButtonA.pressing()){
     //   motora.spin(forward, 0.5, pct);
