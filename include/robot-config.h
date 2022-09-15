@@ -1,4 +1,5 @@
 #pragma once
+#include "vex.h"
 #include "core.h"
 
 using namespace vex;
@@ -17,6 +18,10 @@ extern CustomEncoder rightEncoder,leftEncoder;
 
 // ======== SUBSYSTEMS ========
 extern TankDrive drive;
+extern inertial imu;
+extern robot_specs_t robot_cfg;
+extern OdometryTank odom;
+
 // ======== UTILS ========
 
 /**
