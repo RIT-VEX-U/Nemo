@@ -1,4 +1,5 @@
 #pragma once
+#include "vex.h"
 #include "core.h"
 
 using namespace vex;
@@ -11,8 +12,14 @@ extern motor motorru, motorrb, motorlu, motorlb;
 extern motor_group left_motors, right_motors;
 // ======== INPUTS ========
 
+extern inertial imu;
+
 // ======== SUBSYSTEMS ========
 extern TankDrive drive;
+
+extern robot_specs_t robot_cfg;
+extern OdometryTank odom;
+
 // ======== UTILS ========
 
 /**
