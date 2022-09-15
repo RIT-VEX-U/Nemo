@@ -51,6 +51,9 @@ robot_specs_t robot_cfg = {
   }
 };
 
+OdometryTank odom(leftEncoder, rightEncoder, robot_cfg, &imu);
+TankDrive drive(leftDrive,rightDrive,robot_cfg,&odom);
+
 // ======== UTILS ========
 
 /**

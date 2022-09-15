@@ -14,7 +14,7 @@ void opcontrol()
   {
     
     // ========== DRIVING CONTROLS ==========
-    drive.drive_tank(main_controller.Axis3.position()/100.0, main_controller.Axis2.position()/100.0, 2);
+    drive.drive_tank(main_controller.Axis3.position()/100.0, main_controller.Axis2.position()/100.0);
 
     // ========== MANIPULATING CONTROLS ==========
 
