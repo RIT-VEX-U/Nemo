@@ -1,5 +1,5 @@
 #include "competition/autonomous.h"
-
+#include "robot-config.h"
 /**
  * Contains all the code run during autonomous.
  */ 
