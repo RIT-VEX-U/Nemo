@@ -91,6 +91,12 @@ bool TankDrive::drive_forward(double inches, double speed, double correction, di
     saved_pos = odometry->get_position();
     drive_pid.reset();
 
+    // forwards is positive Y axis, backwards is negative
+    if (dir == directionType::rev)
+      inches = -fabs(inches);
+    else
+      inches = fabs(inches);
+
     // Use vector math to get an X and Y
     Vector current_pos({saved_pos.x , saved_pos.y});
     Vector delta_pos(deg2rad(saved_pos.rot), inches);
