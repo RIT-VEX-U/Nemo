@@ -11,12 +11,15 @@ motor driveLeftFront(PORT11,true), driveLeftRear(PORT12,true),
 driveRightRear(PORT19),driveRightFront(PORT20);
 
 motor_group leftDrive={driveLeftFront,driveLeftRear};
-motor_group rightDrive={driveLeftFront,driveLeftRear};
+motor_group rightDrive={driveRightFront,driveRightRear};
 // ======== INPUTS ========
 CustomEncoder leftEncoder(Brain.ThreeWirePort.C, 2048);
 CustomEncoder rightEncoder(Brain.ThreeWirePort.E,2048);
-
+bumper bumperButton(Brain.ThreeWirePort.A);
+vex::distance distanceSensor(0);
 inertial imu(PORT1);
+
+
 
 // ======== SUBSYSTEMS ========
 
@@ -62,5 +65,6 @@ TankDrive drive(leftDrive,rightDrive,robot_cfg,&odom);
  * This should be called at the start of your int main function.
  */
 void vexcodeInit(void) {
-
+imu.calibrate();
+while(imu.isCalibrating()){}
 }

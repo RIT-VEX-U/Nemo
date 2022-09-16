@@ -15,6 +15,8 @@ extern motor_group leftDrive,rightDrive;
 // ======== INPUTS ========
 
 extern CustomEncoder rightEncoder,leftEncoder;
+extern bumper bumperButton;
+extern vex::distance distanceSensor;
 
 // ======== SUBSYSTEMS ========
 extern TankDrive drive;

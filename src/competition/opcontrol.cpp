@@ -12,7 +12,8 @@ void opcontrol()
   // Periodic
   while(true)
   {
-    
+    printf("Axis 2 %f\n\n",main_controller.Axis2.position()/100.0);
+    printf("Axis 3 %f\n\n",main_controller.Axis3.position()/100.0);
     // ========== DRIVING CONTROLS ==========
     drive.drive_tank(main_controller.Axis3.position()/100.0, main_controller.Axis2.position()/100.0);
 
