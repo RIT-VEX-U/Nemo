@@ -5,28 +5,21 @@
  */ 
 void autonomous()
 {
-  left_motors.spin(directionType::fwd, 0.5, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
-  left_motors.spin(directionType::fwd, 0, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
-  left_motors.spin(directionType::fwd, 0.5, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
-  left_motors.spin(directionType::fwd, 0, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
-  left_motors.spin(directionType::fwd, 0.5, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
-  left_motors.spin(directionType::fwd, 0, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
-  left_motors.spin(directionType::fwd, 0.5, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
-  left_motors.spin(directionType::fwd, 0, pct);
-  right_motors.spin(directionType::fwd, 0.5, pct);
-  vexDelay(1000);
+  drive.drive_tank(0.75,0.75,2);
+  vexDelay(1400);
+  drive.drive_tank(-0.5,0.5,2);
+  vexDelay(775);
+  drive.drive_tank(0.75,0.75,2);
+  vexDelay(600);
+  drive.drive_tank(-0.5,0.5,2);
+  vexDelay(725);
+  drive.drive_tank(0.75,0.75,2);
+  vexDelay(1400);
+  drive.drive_tank(-0.5,0.5,2);
+  vexDelay(725);
+  drive.drive_tank(0.75,0.75,2);
+  vexDelay(600);
+  drive.drive_tank(-0.5,0.5,2);
+  vexDelay(725);
+  drive.drive_tank(0,0,2);
 }
