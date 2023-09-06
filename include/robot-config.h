@@ -16,9 +16,19 @@ extern inertial imu;
 // ======== SUBSYSTEMS ========
 
 extern robot_specs_t robot_cfg;
-extern OdometryTank odom;
+// extern OdometryTank odom;
 
 // ======== UTILS ========
+extern motor left_front;
+extern motor left_back;
+extern motor right_front;
+extern motor right_back;
+extern motor_group left_drive;
+extern motor_group right_drive;
+extern CustomEncoder left_odom_wheel;
+extern CustomEncoder right_odom_wheel;
+extern OdometryTank odometry;
+extern TankDrive drive_system;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

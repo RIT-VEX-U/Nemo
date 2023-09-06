@@ -3,25 +3,25 @@
 /**
  * Contains the main loop of the robot code while running in the driver-control period.
  */
-void opcontrol()
-{
-  // Initialization
+// void opcontrol()
+// {
+//   // Initialization
 
 
-  // Periodic
-  while(true)
-  {
+//   // Periodic
+//   while(true)
+//   {
     
-    // ========== DRIVING CONTROLS ==========
+//     // ========== DRIVING CONTROLS ==========
 
-    // ========== MANIPULATING CONTROLS ==========
+//     // ========== MANIPULATING CONTROLS ==========
 
-    // ========== SECONDARY REMOTE ==========
+//     // ========== SECONDARY REMOTE ==========
 
-    // ========== AUTOMATION ==========    
+//     // ========== AUTOMATION ==========    
 
 
-    // Wait 20 milliseconds for control loops to calculate time correctly
-    vexDelay(20);
-  }
-}
+//     // Wait 20 milliseconds for control loops to calculate time correctly
+//     vexDelay(20);
+//   }
+// }

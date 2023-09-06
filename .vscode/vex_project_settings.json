@@ -1,10 +1,10 @@
 {
 	"project": {
 		"name": "Nemo",
-		"slot": 1,
+		"slot": 2,
 		"description": "Empty V5 C++ Project",
 		"platform": "V5",
-		"creationDate": "Mon, 05 Sep 2022 01:21:05 GMT",
+		"creationDate": "Tue, 05 Sep 2023 22:46:33 GMT",
 		"language": "cpp",
 		"sdkVersion": "V5_20220726_10_00_00",
 		"cpp": {
@@ -12,7 +12,7 @@
 		}
 	},
 	"extension": {
-		"version": "0.1.0",
+		"version": "0.5.0",
 		"json": 1
 	}
 }
