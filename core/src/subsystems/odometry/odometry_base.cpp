@@ -1,35 +1,38 @@
 #include "../core/include/subsystems/odometry/odometry_base.h"
-#include "../core/include/utils/vector2d.h"
+#include "../core/include/utils/vector.h"
 
 /**
- * Construct a new Odometry Base object
- * 
- * @param is_async True to run constantly in the background, false to call update() manually
- */
-OdometryBase::OdometryBase(bool is_async) : current_pos(zero_pos)
+* Gets the current position and rotation
+*/
+position_t OdometryBase::get_position(void)
 {
-  if(is_async)
-    handle = new vex::task(background_task, (void*) this);
+    mut.lock();
+
+    // Create a new struct to pass-by-value
+    position_t out =
+    {
+        .x = current_pos.x,
+        .y = current_pos.y,
+        .rot = current_pos.rot
+    };
+
+    mut.unlock();
+
+    return out;
 }
 
 /**
- * Function that runs in the background task. This function pointer is passed
- * to the vex::task constructor. 
- * 
- * @param ptr Pointer to OdometryBase object
- * @return Required integer return code. Unused.
+ * Sets the current position of the robot
  */
-int OdometryBase::background_task(void* ptr)
+void OdometryBase::set_position(const position_t &newpos)
 {
-    OdometryBase &obj = *((OdometryBase*) ptr);
-    while(!obj.end_task)
-    {
-      obj.mut.lock();
-      obj.update();
-      obj.mut.unlock();
-    }
+    mut.lock();
 
-    return 0;
+    current_pos.x = newpos.x;
+    current_pos.y = newpos.y;
+    current_pos.rot = newpos.rot;
+
+    mut.unlock();
 }
 
 /**
@@ -43,37 +46,7 @@ void OdometryBase::end_async()
 }
 
 /**
-* Gets the current position and rotation
-*/
-position_t OdometryBase::get_position(void)
-{
-    mut.lock();
-
-    // Create a new struct to pass-by-value
-    position_t out = current_pos;
-
-    mut.unlock();
-
-    return out;
-}
-
-/**
- * Sets the current position of the robot
- */
-void OdometryBase::set_position(const position_t& newpos)
-{
-    mut.lock();
-
-    current_pos = newpos;
-
-    mut.unlock();
-}
-
-/**
  * Get the distance between two points
- * @param start_pos distance from this point
- * @param end_pos to this point
- * @return the euclidean distance between start_pos and end_pos
  */
 double OdometryBase::pos_diff(position_t start_pos, position_t end_pos)
 {
@@ -86,7 +59,7 @@ double OdometryBase::pos_diff(position_t start_pos, position_t end_pos)
 /**
  * Get the change in rotation between two points
  */
-double OdometryBase::rot_diff(position_t pos1, position_t pos2)
+double OdometryBase::rot_diff(position_t &pos1, position_t &pos2)
 {
   return pos1.rot - pos2.rot;
 }
@@ -107,42 +80,6 @@ double OdometryBase::smallest_angle(double start_deg, double end_deg)
   // Get the closest angle, now between -180 (turn left) and +180 (turn right)
   if(retval > 180)
     retval -= 360;
-
-  return retval;
-}
-
-double OdometryBase::get_speed()
-{
-  mut.lock();
-  double retval = speed;
-  mut.unlock();
-  
-  return retval;
-}
-
-double OdometryBase::get_accel()
-{
-  mut.lock();
-  double retval = accel;
-  mut.unlock();
-
-  return retval;
-}
-
-double OdometryBase::get_angular_speed_deg()
-{
-  mut.lock();
-  double retval = ang_speed_deg;
-  mut.unlock();
-
-  return retval;
-}
-
-double OdometryBase::get_angular_accel_deg()
-{
-  mut.lock();
-  double retval = ang_accel_deg;
-  mut.unlock();
 
   return retval;
 }
