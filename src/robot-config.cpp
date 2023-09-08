@@ -5,11 +5,23 @@ using namespace vex;
 // A global instance of brain used for printing to the V5 brain screen
 brain Brain;
 
+controller main_controller;
+
 // ======== OUTPUTS ========
+
+motor lftFrnt = motor{PORT1,true};
+motor lftBack = motor{PORT2,true};
+motor rgtFrnt = motor{PORT3};
+motor rgtBack = motor{PORT4};
+
+motor_group leftSide = motor_group{lftFrnt,lftBack};
+motor_group rightSide = motor_group{rgtFrnt,rgtBack};
 
 // ======== INPUTS ========
 
-inertial imu(PORT1);
+inertial imu(PORT5);
+CustomEncoder rgtEnc = CustomEncoder{Brain.ThreeWirePort.A,90};
+CustomEncoder lftEnc = CustomEncoder{Brain.ThreeWirePort.C,90};
 
 // ======== SUBSYSTEMS ========
 
@@ -44,6 +56,9 @@ robot_specs_t robot_cfg = {
   }
 };
 
+OdometryTank odom = OdometryTank{lftEnc,rgtEnc,robot_cfg,&imu,true};
+
+TankDrive tank = TankDrive(leftSide,rightSide,robot_cfg,&odom);
 // ======== UTILS ========
 
 /**
