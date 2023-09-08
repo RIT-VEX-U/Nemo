@@ -4,8 +4,14 @@ using namespace vex;
 
 // A global instance of brain used for printing to the V5 brain screen
 brain Brain;
+controller main_controller;
 
 // ======== OUTPUTS ========
+
+motor left_front(PORT1, vex::gearSetting::ratio18_1, false), left_back(PORT2, vex::gearSetting::ratio18_1, false);
+motor right_front(PORT3, vex::gearSetting::ratio18_1, true), right_back(PORT4, vex::gearSetting::ratio18_1, true);
+
+motor_group left_motors(left_front, left_back), right_motors(right_front, right_back);
 
 // ======== INPUTS ========
 
@@ -44,6 +50,10 @@ robot_specs_t robot_cfg = {
   }
 };
 
+OdometryTank odometry(left_motors, right_motors, robot_cfg, &imu);
+
+TankDrive drive_system(left_motors, right_motors, robot_cfg, &odometry);
+
 // ======== UTILS ========
 
 /**
@@ -52,5 +62,5 @@ robot_specs_t robot_cfg = {
  * This should be called at the start of your int main function.
  */
 void vexcodeInit(void) {
-
+  
 }
