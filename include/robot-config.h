@@ -14,8 +14,8 @@ extern controller main_controller;
 extern inertial imu;
 
 // ======== SUBSYSTEMS ========
-
-extern robot_specs_t robot_cfg;
+extern PID::pid_config_t drive_pid_cfg, turn_pid_cfg;
+extern robot_specs_t config;
 // extern OdometryTank odom;
 
 // ======== UTILS ========
