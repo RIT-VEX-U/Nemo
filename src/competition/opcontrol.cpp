@@ -1,4 +1,5 @@
 #include "competition/opcontrol.h"
+#include "robot-config.h"
 
 /**
  * Contains the main loop of the robot code while running in the driver-control period.
@@ -13,7 +14,9 @@ void opcontrol()
   {
     
     // ========== DRIVING CONTROLS ==========
-
+    double left = main_controller.Axis3.position();
+    double right = main_controller.Axis2.position();
+    drive_system.drive_tank(left, right);
     // ========== MANIPULATING CONTROLS ==========
 
     // ========== SECONDARY REMOTE ==========

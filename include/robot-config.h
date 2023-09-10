@@ -21,6 +21,13 @@ extern PID::pid_config_t turn_pid_cfg;
 extern robot_specs_t robot_cfg;
 extern OdometryTank odom;
 
+extern motor motor1_left;
+extern motor motor2_left;
+extern motor motor1_right;
+extern motor motor2_right;
+
+extern TankDrive drive_system;
+
 // ======== UTILS ========
 
 /**

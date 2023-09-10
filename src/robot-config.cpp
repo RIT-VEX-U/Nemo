@@ -44,6 +44,20 @@ robot_specs_t robot_cfg = {
   }
 };
 
+motor motor1_left = motor(PORT1);
+motor motor2_left = motor(PORT2);
+motor motor1_right = motor(PORT3);
+motor motor2_right = motor(PORT4);
+
+motor_group left_group = motor_group(motor1_left, motor2_left);
+motor_group right_group = motor_group(motor1_right, motor2_right);
+
+OdometryTank odom(left_group, right_group, robot_cfg, &imu);
+
+TankDrive drive_system = TankDrive(left_group, right_group, robot_cfg, &odom);
+
+
+
 // ======== UTILS ========
 
 /**
