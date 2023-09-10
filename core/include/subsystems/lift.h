@@ -22,6 +22,12 @@ class Lift
 {
   public:
 
+  /**
+   * lift_cfg_t holds the physical parameter specifications of a lify system.
+   * includes:
+   * - maximum speeds for the system
+   * - softstops to stop the lift from hitting the hard stops too hard 
+   */
   struct lift_cfg_t
   {
     double up_speed, down_speed;
@@ -290,7 +296,7 @@ class Lift
   /**
     * Enables or disables the background task. Note that running the control functions, or set_position functions
     * will immediately re-enable the task for autonomous use.
-    * @param Whether or not the background thread should run the lift
+    * @param val Whether or not the background thread should run the lift
     */
   void set_async(bool val)
   {

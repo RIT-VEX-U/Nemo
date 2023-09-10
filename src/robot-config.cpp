@@ -24,6 +24,23 @@ CustomEncoder rgtEnc = CustomEncoder{Brain.ThreeWirePort.A,90};
 CustomEncoder lftEnc = CustomEncoder{Brain.ThreeWirePort.C,90};
 
 // ======== SUBSYSTEMS ========
+PID::pid_config_t drive_pid_cfg =
+{
+  .p = .1,
+  .i = .001,
+  .d = .008,
+  .deadband = 0.3,
+  .on_target_time = 0
+};
+
+PID::pid_config_t turn_pid_cfg = 
+{
+  .p = 0.025,
+  .i = 0.01,
+  .d = 0.0015,
+  .deadband = 5,
+  .on_target_time = 0.1
+};
 
 robot_specs_t robot_cfg = {
   .robot_radius = 12, // inches
@@ -31,25 +48,8 @@ robot_specs_t robot_cfg = {
   .odom_gear_ratio = 1.03, // inches
   .dist_between_wheels = 9.18, // inches
   .drive_correction_cutoff = 12, //inches
-  .drive_pid = (PID::pid_config_t) 
-  {
-    .p = .1,
-    .i = .001,
-    .d = .008,
-    .f = 0,
-    .k = .05,
-    .deadband = 0.3,
-    .on_target_time = 0
-  },
-  .turn_pid = (PID::pid_config_t)
-  {
-    .p = 0.025,
-    .i = 0.01,
-    .d = 0.0015,
-    .f = 0,
-    .deadband = 5,
-    .on_target_time = 0.1
-  },
+  .drive_feedback = new PID(drive_pid_cfg),
+  .turn_feedback = new PID(turn_pid_cfg),
   .correction_pid = (PID::pid_config_t)
   {
     .p = .01,

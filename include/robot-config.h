@@ -26,6 +26,9 @@ extern CustomEncoder lftEnc;
 
 // ======== SUBSYSTEMS ========
 
+extern PID::pid_config_t drive_pid_cfg;
+extern PID::pid_config_t turn_pid_cfg;
+
 extern robot_specs_t robot_cfg;
 extern OdometryTank odom;
 extern TankDrive tank;
