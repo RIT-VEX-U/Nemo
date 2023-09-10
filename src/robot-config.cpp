@@ -9,7 +9,7 @@ brain Brain;
 
 // ======== INPUTS ========
 
-inertial imu(PORT1);
+inertial imu(PORT10);
 
 // ======== SUBSYSTEMS ========
 PID::pid_config_t drive_pid_cfg =
