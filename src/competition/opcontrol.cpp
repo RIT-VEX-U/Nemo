@@ -16,7 +16,7 @@ void opcontrol()
     // ========== DRIVING CONTROLS ==========
     double left = main_controller.Axis3.position();
     double right = main_controller.Axis2.position();
-    drive_system.drive_tank(left, right);
+    drive_system.drive_tank(left/5, right/5);
     // ========== MANIPULATING CONTROLS ==========
 
     // ========== SECONDARY REMOTE ==========
