@@ -26,6 +26,8 @@ void MotionController::init(double start_pt, double end_pt)
     profile.set_endpts(start_pt, end_pt);
     pid.reset();
     tmr.reset();
+
+    this->end_pt = end_pt;
 }
 
 /**
@@ -36,9 +38,13 @@ void MotionController::init(double start_pt, double end_pt)
 */
 double MotionController::update(double sensor_val)
 {
-    cur_motion = profile.calculate(tmr.time(timeUnits::sec));
+    // printf("%f %f\n", tmr.time(timeUnits::sec), sensor_val);
+    cur_motion = profile.calculate(tmr.time(timeUnits::sec), sensor_val);
+    // cur_motion = profile.calculate_time_based(tmr.time(timeUnits::sec));
     pid.set_target(cur_motion.pos);
     pid.update(sensor_val);
+
+    this->current_pos = sensor_val;
 
     out = pid.get() +  ff.calculate(cur_motion.vel, cur_motion.accel, pid.get());
 
@@ -74,7 +80,7 @@ void MotionController::set_limits(double lower, double upper)
  */
 bool MotionController::is_on_target()
 {
-    return (tmr.time(timeUnits::sec) > profile.get_movement_time()) && pid.is_on_target();
+    return (tmr.time(timeUnits::sec) > profile.get_movement_time()) && pid.is_on_target() && fabs(end_pt - current_pos) < pid.config.deadband;
 }
 
 /**

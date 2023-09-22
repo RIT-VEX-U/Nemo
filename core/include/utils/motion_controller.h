@@ -117,6 +117,9 @@ class MotionController : public Feedback
     FeedForward ff;
     TrapezoidProfile profile;
 
+    double current_pos;
+    double end_pt;
+
     double lower_limit = 0, upper_limit = 0;
     double out = 0;
     motion_t cur_motion;

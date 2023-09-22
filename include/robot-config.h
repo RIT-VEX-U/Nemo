@@ -16,13 +16,24 @@ extern motor_group left_motors, right_motors;
 
 extern inertial imu;
 
+extern CustomEncoder left_odom_wheel;
+extern CustomEncoder right_odom_wheel;
+
 // ======== SUBSYSTEMS ========
 
 extern PID::pid_config_t drive_pid_cfg;
 extern PID::pid_config_t turn_pid_cfg;
 
+extern FeedForward::ff_config_t drive_ff_cfg;
+extern FeedForward::ff_config_t turn_ff_cfg;
+
+extern MotionController::m_profile_cfg_t drive_profile_cfg;
+extern MotionController::m_profile_cfg_t turn_profile_cfg;
+
+extern MotionController motion_controller;
+
 extern robot_specs_t robot_cfg;
-extern OdometryTank odom;
+extern OdometryTank odometry;
 
 extern TankDrive drive_system;
 

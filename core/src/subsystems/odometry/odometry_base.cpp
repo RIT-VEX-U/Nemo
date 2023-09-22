@@ -1,5 +1,6 @@
 #include "../core/include/subsystems/odometry/odometry_base.h"
 #include "../core/include/utils/vector2d.h"
+#include <thread>
 
 /**
  * Construct a new Odometry Base object
@@ -21,6 +22,8 @@ OdometryBase::OdometryBase(bool is_async) : current_pos(zero_pos)
  */
 int OdometryBase::background_task(void* ptr)
 {
+    // Wait for encoders to bug out before starting system
+    this_thread::sleep_for(1000);
     OdometryBase &obj = *((OdometryBase*) ptr);
     while(!obj.end_task)
     {
