@@ -10,7 +10,7 @@ PID::PID(pid_config_t &config)
   pid_timer.reset();
 }
 
-void PID::init(double start_pt, double set_pt)
+void PID::init(double start_pt, double set_pt, double start_vel, double end_vel)
 {
   set_target(set_pt);
   reset();

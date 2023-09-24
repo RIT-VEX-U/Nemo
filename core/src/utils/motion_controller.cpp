@@ -20,10 +20,13 @@ MotionController::MotionController(m_profile_cfg_t &config)
  * This will also reset the PID and profile timers.
  * @param start_pt Movement starting position
  * @param end_pt Movement ending posiiton 
+ * @param start_vel Movement starting velocity
+ * @param end_vel Movement ending velocity
  */
-void MotionController::init(double start_pt, double end_pt)
+void MotionController::init(double start_pt, double end_pt, double start_vel, double end_vel)
 {
     profile.set_endpts(start_pt, end_pt);
+    profile.set_vel_endpts(start_vel, end_vel);
     pid.reset();
     tmr.reset();
 

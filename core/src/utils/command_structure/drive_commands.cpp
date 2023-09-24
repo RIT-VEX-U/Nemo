@@ -29,8 +29,8 @@
  * @param dir the direction to drive
  * @param max_speed 0 -> 1 percentage of the drive systems speed to drive at
 */
-DriveForwardCommand::DriveForwardCommand(TankDrive &drive_sys, Feedback &feedback, double inches, directionType dir, double max_speed):
-  drive_sys(drive_sys), feedback(feedback), inches(inches), dir(dir), max_speed(max_speed) {}
+DriveForwardCommand::DriveForwardCommand(TankDrive &drive_sys, Feedback &feedback, double inches, directionType dir, double max_speed, double end_vel):
+  drive_sys(drive_sys), feedback(feedback), inches(inches), dir(dir), max_speed(max_speed), end_vel(end_vel) {}
 
 /**
  * Run drive_forward
@@ -38,7 +38,7 @@ DriveForwardCommand::DriveForwardCommand(TankDrive &drive_sys, Feedback &feedbac
  * @returns true when execution is complete, false otherwise
  */
 bool DriveForwardCommand::run() {
-  return drive_sys.drive_forward(inches, dir, feedback, max_speed);
+  return drive_sys.drive_forward(inches, dir, feedback, max_speed, end_vel);
 }
 
 /**
