@@ -69,19 +69,21 @@ public:
    * @param dir        the direction we want to travel forward and backward
    * @param feedback   the custom feedback controller we will use to travel. controls the rate at which we accelerate and drive.
    * @param max_speed  the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param end_vel    the movement profile will attempt to reach this velocity by its completion
    * @return true when we have reached our target distance
    */
-  bool drive_forward(double inches, directionType dir, Feedback &feedback, double max_speed=1);
+  bool drive_forward(double inches, directionType dir, Feedback &feedback, double max_speed=1, double end_vel=0);
 
   /**
    * Autonomously drive the robot forward a certain distance
    * 
    * 
    * @param inches      degrees by which we will turn relative to the robot (+) turns ccw, (-) turns cw
-   * @param dir        the direction we want to travel forward and backward
+   * @param dir         the direction we want to travel forward and backward
    * @param max_speed   the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param end_vel     the movement profile will attempt to reach this velocity by its completion
    */
-  bool drive_forward(double inches, directionType dir, double max_speed=1);
+  bool drive_forward(double inches, directionType dir, double max_speed=1, double end_vel=0);
 
   /**
    * Autonomously turn the robot X degrees counterclockwise (negative for clockwise), with a maximum motor speed
@@ -93,7 +95,7 @@ public:
    * @param feedback    the feedback controller we will use to travel. controls the rate at which we accelerate and drive.
    * @param max_speed   the maximum percentage of robot speed at which the robot will travel. 1 = full power
    */
-  bool turn_degrees(double degrees, Feedback &feedback, double max_speed=1);
+  bool turn_degrees(double degrees, Feedback &feedback, double max_speed=1, double end_vel=0);
 
   /**
    * Autonomously turn the robot X degrees to counterclockwise (negative for clockwise), with a maximum motor speed
@@ -103,8 +105,9 @@ public:
    * 
    * @param degrees     degrees by which we will turn relative to the robot (+) turns ccw, (-) turns cw
    * @param max_speed   the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param end_vel     the movement profile will attempt to reach this velocity by its completion
    */  
-  bool turn_degrees(double degrees, double max_speed=1);
+  bool turn_degrees(double degrees, double max_speed=1, double end_vel=0);
 
   /**
    * Use odometry to automatically drive the robot to a point on the field.
@@ -116,8 +119,9 @@ public:
    * @param dir        the direction we want to travel forward and backward
    * @param feedback   the feedback controller we will use to travel. controls the rate at which we accelerate and drive.
    * @param max_speed  the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param end_vel    the movement profile will attempt to reach this velocity by its completion
    */
-  bool drive_to_point(double x, double y, vex::directionType dir, Feedback &feedback, double max_speed=1);
+  bool drive_to_point(double x, double y, vex::directionType dir, Feedback &feedback, double max_speed=1, double end_vel=0);
   
   /**
    * Use odometry to automatically drive the robot to a point on the field.
@@ -129,8 +133,9 @@ public:
    * @param y          the y position of the target
    * @param dir        the direction we want to travel forward and backward
    * @param max_speed  the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param end_vel    the movement profile will attempt to reach this velocity by its completion
    */
-  bool drive_to_point(double x, double y, vex::directionType dir, double max_speed=1);
+  bool drive_to_point(double x, double y, vex::directionType dir, double max_speed=1, double end_vel=0);
 
   /**
    * Turn the robot in place to an exact heading relative to the field.
@@ -138,17 +143,19 @@ public:
    * 
    * @param heading_deg the heading to which we will turn 
    * @param feedback    the feedback controller we will use to travel. controls the rate at which we accelerate and drive.
-   * @param max_speed  the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param max_speed   the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param end_vel     the movement profile will attempt to reach this velocity by its completion
    */
-  bool turn_to_heading(double heading_deg, Feedback &feedback, double max_speed=1);
+  bool turn_to_heading(double heading_deg, Feedback &feedback, double max_speed=1, double end_vel=0);
   /**
    * Turn the robot in place to an exact heading relative to the field.
    * 0 is forward. Uses the defualt turn feedback of the drive system 
    * 
    * @param heading_deg the heading to which we will turn 
-   * @param max_speed  the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param max_speed   the maximum percentage of robot speed at which the robot will travel. 1 = full power
+   * @param end_vel     the movement profile will attempt to reach this velocity by its completion
    */
-  bool turn_to_heading(double heading_deg, double max_speed=1);
+  bool turn_to_heading(double heading_deg, double max_speed=1, double end_vel=0);
 
   /**
    * Reset the initialization for autonomous drive functions

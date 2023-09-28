@@ -35,7 +35,7 @@ using namespace vex;
  */
 class DriveForwardCommand: public AutoCommand {
   public:
-    DriveForwardCommand(TankDrive &drive_sys, Feedback &feedback, double inches, directionType dir, double max_speed=1);
+    DriveForwardCommand(TankDrive &drive_sys, Feedback &feedback, double inches, directionType dir, double max_speed=1, double end_vel=0);
 
     /**
      * Run drive_forward
@@ -59,6 +59,7 @@ class DriveForwardCommand: public AutoCommand {
     double inches;
     directionType dir;
     double max_speed;
+    double end_vel;
 };
 
 /**

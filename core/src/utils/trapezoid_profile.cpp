@@ -175,25 +175,25 @@ bool TrapezoidProfile::precalculate() {
     this->num_acceleration_phases = 0;
 
     if (this->accel < EPSILON) {
-        printf("WARNING: trapezoid motion profile acceleration was negative, or too small");
+        printf("WARNING: trapezoid motion profile acceleration was negative, or too small\n");
         this->accel = fmin(EPSILON, fabs(this->accel));
     }
 
     if (this->max_v < EPSILON) {
-        printf("WARNING: trapezoid motion profile maximum velocity was negative, or too small");
+        printf("WARNING: trapezoid motion profile maximum velocity was negative, or too small\n");
         this->max_v = fmin(EPSILON, fabs(this->max_v));
     }
 
     // make sure vf is within v_max
     if (fabs(this->vf) > this->max_v) {
-        printf("WARNING: trapezoid motion profile target velocity is greater than maximum velocity");
+        printf("WARNING: trapezoid motion profile target velocity is greater than maximum velocity\n");
         if (this->vf > this->max_v) this->vf = this->max_v;
         else this->vf = -this->max_v;
     }
 
     // if displacement is + but vf is -, or if displacement is - but vf is +
     if ((this->si < this->sf && this->vf < 0) || (this->si > this->sf && this->vf > 0)) {
-        printf("WARNING: trapezoid motion profile target velocity is in the wrong direction");
+        printf("WARNING: trapezoid motion profile target velocity is in the wrong direction\n");
         this->vf = 0;
     }
 
@@ -228,7 +228,7 @@ bool TrapezoidProfile::precalculate() {
                 segment.pos_after = calc_pos(segment.duration, segment.accel, v, s);
                 return true;
             } else {
-                printf("ERROR: No real solution to reach sf.");
+                printf("ERROR: No real solution to reach sf.\n");
                 return false;
             }
         }
@@ -237,7 +237,7 @@ bool TrapezoidProfile::precalculate() {
         s = segment.pos_after;
     }
 
-    printf("WARNING: trapezoid motion profile did not reach end position in %d segments (the maximum)", MAX_TRAPEZOID_PROFILE_SEGMENTS);
+    printf("WARNING: trapezoid motion profile did not reach end position in %d segments (the maximum)\n", MAX_TRAPEZOID_PROFILE_SEGMENTS);
     return false;
 }
 

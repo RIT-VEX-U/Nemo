@@ -116,7 +116,7 @@ bool TankDrive::drive_forward(double inches, directionType dir, Feedback &feedba
   }
 
   // Call the drive_to_point with updated point values
-  return drive_to_point(pos_setpt.x, pos_setpt.y, dir, feedback, max_speed);
+  return drive_to_point(pos_setpt.x, pos_setpt.y, dir, feedback, max_speed, end_vel);
 }
 /**
  * Autonomously drive the robot forward a certain distance
@@ -224,7 +224,7 @@ bool TankDrive::drive_to_point(double x, double y, vex::directionType dir, Feedb
 
     // Reset the control loops
     correction_pid.init(0, 0, 0, 0);
-    feedback.init(-initial_dist, 0, odometry->get_speed(), end_vel);
+    feedback.init(-initial_dist, 0, odometry->get_speed(), fabs(end_vel));
 
     correction_pid.set_limits(-1, 1);
     feedback.set_limits(-1, 1);
@@ -247,8 +247,6 @@ bool TankDrive::drive_to_point(double x, double y, vex::directionType dir, Feedb
 
   // Get the distance between 2 points
   double dist_left = OdometryBase::pos_diff(current_pos, end_pos);
-
-  // printf("%f\n", odometry->get_speed());
   
   int sign = 1;
 
