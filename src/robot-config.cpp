@@ -8,14 +8,14 @@ brain Brain;
 controller main_controller;
 
 // ======== OUTPUTS ========
-motor lf(PORT2, gearSetting::ratio6_1, true), lr(PORT7, gearSetting::ratio6_1, true),
-      rf(PORT1, gearSetting::ratio6_1, false), rr(PORT6, gearSetting::ratio6_1, false);
+motor lf(PORT1, gearSetting::ratio6_1, true), lr(PORT2, gearSetting::ratio6_1, true),
+      rf(PORT3, gearSetting::ratio6_1, false), rr(PORT4, gearSetting::ratio6_1, false);
 
 motor_group left_motors = {lf, lr};
 motor_group right_motors = {rf, rr};
 
 // ======== INPUTS ========
-inertial imu(PORT8);
+inertial imu(PORT10);
 
 // ======== SUBSYSTEMS ========
 

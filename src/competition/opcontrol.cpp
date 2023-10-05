@@ -4,6 +4,7 @@
 #include "mazegame.h"
 
 // #define AUTOMODE
+#define NEMO
 
 #define BLUE_HUE 265
 #define TILE_HUE 39
