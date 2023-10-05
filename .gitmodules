@@ -1,0 +1,4 @@
+[submodule "core"]
+	path = Core
+	url = git@github.com:RIT-VEX-U/Core.git
+	branch = test_repo
