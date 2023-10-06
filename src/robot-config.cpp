@@ -26,7 +26,7 @@ inertial imu(PORT10);
 //   .p = .0,
 //   .i = .0,
 //   .d = .0,
-//   .deadband = 0.0,
+//   .deadband = 10.0,
 //   .on_target_time = 0
 // };
 
